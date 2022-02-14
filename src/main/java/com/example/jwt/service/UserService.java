@@ -19,19 +19,19 @@ public class UserService implements IUserService{
     private final IRoleRepository roleRepository;
 
     @Override
-    public UserData CreateUser(UserData user) {
+    public UserData createUser(UserData user) {
         log.info("Store new user {} to the database", user.getUserName());
         return userRepository.save(user);
     }
 
     @Override
-    public RoleData CreateRole(RoleData role) {
+    public RoleData createRole(RoleData role) {
         log.info("Store new role {} to the database", role.getName());
         return roleRepository.save(role);
     }
 
     @Override
-    public void CreateRoleAssignation(String userName, String roleName) {
+    public void createRoleAssignation(String userName, String roleName) {
         log.info("Assign role {} to user {}", roleName, userName);
         UserData user = userRepository.findByUserName(userName);
         RoleData role = roleRepository.findByName(roleName);
